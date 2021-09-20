@@ -7,4 +7,3 @@
 
 loginPage
 
-![1](https://user-images.githubusercontent.com/53888108/133976793-1c939dfd-bbb0-4f7f-8f0d-8da63ab2d8bb.JPG)
