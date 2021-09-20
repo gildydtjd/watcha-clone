@@ -6,5 +6,3 @@
 4. redux-saga
 
 loginPage
-
-![2](https://user-images.githubusercontent.com/53888108/133976941-1d7790bc-da14-4086-8de0-b12efcd32778.jpg)
