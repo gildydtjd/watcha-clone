@@ -28,8 +28,8 @@ const SosialLogoDiv = styled.div<sosialType>`
   background-image: url(${(props) => props.background});
   background-position: center;
   background-size: cover;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
 `;
 
 const sosialLogo = ['facebook.svg', 'google.svg', 'twitter.svg'];
