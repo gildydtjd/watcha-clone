@@ -16,7 +16,9 @@ const SosialLoginDiv = styled.div`
   div {
     display: flex;
     margin: 10px 5px;
-    cursor: pointer;
+    .sosialLogoDiv {
+      cursor: pointer;
+    }
   }
 `;
 
@@ -35,7 +37,9 @@ const SosialLogoDiv = styled.div<sosialType>`
 const sosialLogo = ['facebook.svg', 'google.svg', 'twitter.svg'];
 
 const sosialLender = sosialLogo.map((s) => {
-  return <SosialLogoDiv background={'/assets/img/' + s} />;
+  return (
+    <SosialLogoDiv className="sosialLogoDiv" background={'/assets/img/' + s} />
+  );
 });
 function SosialLogin() {
   return (

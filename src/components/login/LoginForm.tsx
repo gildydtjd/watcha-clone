@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import SosialLogin from './SosialLogin';
 
@@ -10,21 +11,26 @@ interface CheckImgType {
   dis: string;
 }
 
-const LoginFormDiv = styled.div<spanType>`
+const LoginDiv = styled.div<spanType>`
   height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  form {
+  .loginBox {
     padding: 20px;
-    button {
+    .loginLink {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background-color: rgb(248, 47, 98);
       width: 300px;
       height: 50px;
       border-radius: 40px;
       font-weight: 800;
-      color: #fff;
       border: none;
+      color: #fff;
+      text-decoration: none;
+      margin: 0 auto;
     }
   }
 `;
@@ -57,27 +63,60 @@ const CheckImg = styled.div<CheckImgType>`
   width: 20px;
   height: 20px;
   position: absolute;
-  display: ${(props) => (props.dis === 'none' ? 'none' : 'relative')};
+  display: ${(props) => (props.dis ? props.dis : 'none')};
   margin-top: 15px;
   right: 5%;
 `;
 
 function LoginForm() {
-  const checkdis = 'none';
+  const [checkdis, setCheckdis] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const validateEmail = (mail: string) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
+  };
+
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangePass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
+
+  useEffect(() => {
+    const vali = validateEmail(email);
+    vali ? setCheckdis('relative') : setCheckdis('none');
+  }, [email]);
+
   return (
-    <LoginFormDiv size="1">
-      <form>
+    <LoginDiv size="">
+      <div className="loginBox">
         <LoginSpan size="20px">로그인</LoginSpan>
         <LoginSpan size="">비밀번호를 잊어버리셨나요?</LoginSpan>
         <InputDiv>
           <CheckImg dis={checkdis} />
-          <input type="text" placeholder="email"></input>
-          <input type="text" placeholder="password"></input>
+          <input
+            type="text"
+            placeholder="email"
+            onChange={onChangeEmail}
+          ></input>
+          <input
+            type="text"
+            placeholder="password"
+            onChange={onChangePass}
+          ></input>
         </InputDiv>
-        <button>로그인</button>
+        <Link to="/main" className="loginLink">
+          로그인
+        </Link>
         <SosialLogin />
-      </form>
-    </LoginFormDiv>
+      </div>
+    </LoginDiv>
   );
 }
 
