@@ -11,6 +11,6 @@ loginPage
 
 validation
 
-https://user-images.githubusercontent.com/53888108/135059186-8f1f78c8-9469-4030-a90d-77c4f1c895e3.mp4
+![GOMCAM-20210928_1811400873](https://user-images.githubusercontent.com/53888108/135059356-49b4da88-45a0-4efe-bcba-ee9739a2e386.gif)
 
 
