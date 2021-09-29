@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -7,11 +8,15 @@ interface spanType {
   size: string;
 }
 
-interface CheckImgType {
+interface checkImgType {
   dis: string;
 }
 
-const LoginDiv = styled.div<spanType>`
+interface loginType {
+  color: string;
+}
+
+const LoginDiv = styled.div<loginType>`
   height: 85vh;
   display: flex;
   justify-content: center;
@@ -22,7 +27,8 @@ const LoginDiv = styled.div<spanType>`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgb(248, 47, 98);
+      background-color: ${(props) =>
+        props.color ? props.color : 'rgb(248, 47, 98)'};
       width: 300px;
       height: 50px;
       border-radius: 40px;
@@ -54,11 +60,11 @@ const InputDiv = styled.div`
     width: 300px;
     height: 50px;
     border-radius: 5px;
-    border: 0.5px solid #c9c9c9;
+    border: 0.2px solid #c9c9c9;
   }
 `;
 
-const CheckImg = styled.div<CheckImgType>`
+const CheckImg = styled.div<checkImgType>`
   background-image: url('/assets/img/check.svg');
   width: 20px;
   height: 20px;
@@ -72,6 +78,7 @@ function LoginForm() {
   const [checkdis, setCheckdis] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loginColor, setLoginColor] = useState('');
 
   const validateEmail = (mail: string) => {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
@@ -91,10 +98,11 @@ function LoginForm() {
   useEffect(() => {
     const vali = validateEmail(email);
     vali ? setCheckdis('relative') : setCheckdis('none');
+    vali ? setLoginColor('#008d62') : setLoginColor('rgb(248, 47, 98)');
   }, [email]);
 
   return (
-    <LoginDiv size="">
+    <LoginDiv color={loginColor}>
       <div className="loginBox">
         <LoginSpan size="20px">로그인</LoginSpan>
         <LoginSpan size="">비밀번호를 잊어버리셨나요?</LoginSpan>
@@ -111,7 +119,7 @@ function LoginForm() {
             onChange={onChangePass}
           ></input>
         </InputDiv>
-        <Link to="/main" className="loginLink">
+        <Link to={'/main' + email + '/' + password} className="loginLink">
           로그인
         </Link>
         <SosialLogin />

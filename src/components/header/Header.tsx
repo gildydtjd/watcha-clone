@@ -24,14 +24,18 @@ const LoginBox = styled.div`
   border-radius: 40px;
   font-weight: 800;
   font-size: 13px;
-  margin-left: 83%;
+  margin-right: 3%;
 `;
 
 function Header() {
   return (
     <HeaderDiv>
       <Logo>WATCHA</Logo>
-      <LoginBox>회원가입</LoginBox>
+      <div
+        style={{ display: 'flex', justifyContent: 'flex-end', width: '88%' }}
+      >
+        <LoginBox>회원가입</LoginBox>
+      </div>
     </HeaderDiv>
   );
 }
