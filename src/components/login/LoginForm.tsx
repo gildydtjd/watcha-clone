@@ -119,7 +119,7 @@ function LoginForm() {
             onChange={onChangePass}
           ></input>
         </InputDiv>
-        <Link to={'/main' + email + '/' + password} className="loginLink">
+        <Link to={'/main/' + email + '/' + password} className="loginLink">
           로그인
         </Link>
         <SosialLogin />
