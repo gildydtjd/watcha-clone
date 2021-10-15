@@ -114,7 +114,7 @@ function LoginForm() {
             onChange={onChangeEmail}
           ></input>
           <input
-            type="text"
+            type="password"
             placeholder="password"
             onChange={onChangePass}
           ></input>
