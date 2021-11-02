@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderDiv = styled.div`
@@ -34,7 +35,11 @@ function Header() {
       <div
         style={{ display: 'flex', justifyContent: 'flex-end', width: '88%' }}
       >
-        <LoginBox>회원가입</LoginBox>
+        <LoginBox>
+          <Link to="/join" style={{ color: 'black', textDecoration: 'none' }}>
+            회원가입
+          </Link>
+        </LoginBox>
       </div>
     </HeaderDiv>
   );
